@@ -1,6 +1,5 @@
 from math import sqrt
-
-import Position
+import Position, Draw
 
 OFFSET = Position.GRID_PX * 11
 
@@ -8,15 +7,12 @@ OFFSET = Position.GRID_PX * 11
 class Note(object, Position):
     def __init__(self, direction, startpos, speed):
         self.direction = direction
-        self.startpos = startpos
         self.position = startpos
         self.speed = speed if direction <= 3 else speed * sqrt(2)
+        self.moveIn()
 
     xDir = 0
     yDir = 0
-
-    def spawn(self):
-        pass
 
     def setMotion(self):
 
@@ -52,8 +48,10 @@ class Note(object, Position):
 
     def moveIn(self, xDir, yDir, speed):
         #while self.position != targetPositon:
-        #    self.position.posX += xDir * speed
-        #    self.position.posY += yDir * speed
+            self.position.posX += xDir * speed
+            self.position.posY += yDir * speed
+            Draw.remove(self)
+            Draw.add(self)
             pass
 
 
