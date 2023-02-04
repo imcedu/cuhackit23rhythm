@@ -1,5 +1,18 @@
+from enum import Enum
+
 GRID_PX = 70
 THRESHOLD = GRID_PX / 10
+
+
+class Direction(Enum):
+    C_UP = 0,
+    C_DOWN = 1,
+    C_LEFT = 2,
+    C_RIGHT = 3,
+    D_UPLEFT = 4,
+    D_UPRIGHT = 5,
+    D_DNRIGHT = 6,
+    D_DNLEFT = 7
 
 
 class Position(object):
