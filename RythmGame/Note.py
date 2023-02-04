@@ -50,8 +50,8 @@ class Note(object, Position):
         #while self.position != targetPositon:
             self.position.posX += xDir * speed
             self.position.posY += yDir * speed
-            Draw.remove(self)
-            Draw.add(self)
+            Draw.Draw.erase(self)
+            Draw.Draw.add(self)
             pass
 
 
