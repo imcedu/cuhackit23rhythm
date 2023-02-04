@@ -29,6 +29,7 @@ def main():
                     game_flow.draw_gamescreen(WIN)
                 if event.key == pygame.K_ESCAPE:
                     run = False
+        screen.draw(WIN)
     
     pygame.quit()
 

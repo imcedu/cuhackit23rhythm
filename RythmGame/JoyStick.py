@@ -1,5 +1,4 @@
-import pygame
-from Position import Position
+import pygame, Position, Draw
 
 RED = (255, 0, 0)
 GRID_SQUARE_SIZE = 70
@@ -24,11 +23,12 @@ class JoyStick(Position):
             self.posY = self.posY + GRID_SQUARE_SIZE
 
         # Draw the joystick in the new location
-        pygame.draw.rect(WIN, RED, pygame.Rect(self.posX, self.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
+        Draw.Draw.add(self)
 
 
     def reset_stick(self, start_index):
         self.posX = start_index
         self.posY = start_index
+        Draw.Draw.erase(self)
         
 
