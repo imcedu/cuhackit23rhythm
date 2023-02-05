@@ -20,6 +20,9 @@ NOTE_D_DNRIGHT = pygame.image.load(
 NOTE_D_DNLEFT = pygame.image.load(
     os.path.join('RythmGame/asteroids', 'southwest.png'))
 QUIT_TEXT = pygame.image.load(os.path.join('RythmGame/graphics', 'quit_instructions.png'))
+JOYSTICK_IMAGE = pygame.image.load(os.path.join('RythmGame/sprites', 'small_target.png'))
+JOYSTICK = pygame.transform.scale(JOYSTICK_IMAGE, (250, 250))
+JOYSTICK_OFFSET = 75
 
 RED = (255, 0, 0)
 BLUE = (0, 255, 0)
@@ -92,8 +95,7 @@ class Draw(object):
                 #image = pygame.transform.scale_by(image, 30)
                 WIN.blit(image, (o.posX, o.posY))
             elif isinstance(o, JoyStick.JoyStick):
-                #TODO: Replace placeholder shape with correct png
-                pygame.draw.rect(WIN, RED, pygame.Rect(o.posX, o.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
+                WIN.blit(JOYSTICK, (o.posX - JOYSTICK_OFFSET, o.posY - JOYSTICK_OFFSET))
         
         pygame.display.update()
 
