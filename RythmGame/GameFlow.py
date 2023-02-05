@@ -8,6 +8,7 @@ START_TEXT = pygame.image.load(
     os.path.join('RythmGame/graphics', 'start_instructions.png'))
 
 THRESHOLD = 10
+file = 'RythmGame/music/astro_beats.mp3'
 
 class GameFlow():
     def __init__(self):
@@ -26,7 +27,10 @@ class GameFlow():
         
 
     def play_backtrack(self):
-        pass
+        pygame.mixer.init()
+        pygame.mixer.music.load(file)
+        pygame.mixer.music.play()
+        pygame.event.wait()
 
     def play_note(self):
         pass

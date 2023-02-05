@@ -4,6 +4,9 @@ GRID_SQUARE_SIZE = 70
 GAMESCREEN_IMAGE = pygame.image.load(
     os.path.join('RythmGame/graphics', 'gamescreen.png'))
 QUIT_TEXT = pygame.image.load(os.path.join('RythmGame/graphics', 'quit_instructions.png'))
+JOYSTICK_IMAGE = pygame.image.load(os.path.join('RythmGame/sprites', 'target.png'))
+JOYSTICK = pygame.transform.scale(JOYSTICK_IMAGE, (150, 150))
+JOYSTICK_OFFSET = 10
 
 RED = (255, 0, 0)
 BLUE = (0, 255, 0)
@@ -40,7 +43,10 @@ class Draw(object):
                 pygame.draw.rect(WIN, BLUE, pygame.Rect(o.posX, o.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
             elif isinstance(o, JoyStick.JoyStick):
                 #TODO: Replace placeholder shape with correct png
-                pygame.draw.rect(WIN, RED, pygame.Rect(o.posX, o.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
+                WIN.blit(JOYSTICK, (o.posX - JOYSTICK_OFFSET, o.posY - JOYSTICK_OFFSET))
+                pygame.display.update()
+
+                #pygame.draw.rect(WIN, RED, pygame.Rect(o.posX, o.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
         
         pygame.display.update()
 
