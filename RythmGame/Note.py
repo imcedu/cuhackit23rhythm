@@ -70,7 +70,6 @@ class Note():
             self.pos.second += yDir * speed
             Draw.remove(self)
             Draw.add(self)
-            pass
 
 
 

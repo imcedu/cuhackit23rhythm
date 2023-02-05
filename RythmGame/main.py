@@ -26,11 +26,10 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_s:
-                    game_flow.draw_gamescreen(WIN)
+                    screen.draw(WIN)
                 if event.key == pygame.K_ESCAPE:
                     run = False
-        screen.draw(WIN)
-    
+                        
     pygame.quit()
 
 if __name__ == "__main__":
