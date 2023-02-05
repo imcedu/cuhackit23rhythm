@@ -28,7 +28,7 @@ QUIT_TEXT = pygame.image.load(os.path.join('RythmGame/graphics', 'quit_instructi
 # JOYSTICK = pygame.transform.scale(JOYSTICK_IMAGE, (250, 250))
 JOYSTICK = pygame.image.load(os.path.join('RythmGame/sprites', 'RESIZED_.png'))
 #ASTEROID = pygame.transform.scale(NOTE_GENERAL, (0, 0))
-JOYSTICK_OFFSET = 75
+JOYSTICK_OFFSET = 0
 ASTEROID_OFFSET = 15
 
 RED = (255, 0, 0)
