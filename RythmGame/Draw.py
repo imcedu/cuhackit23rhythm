@@ -1,4 +1,4 @@
-import pygame, os
+import pygame, os, Note, JoyStick
 
 GRID_SQUARE_SIZE = 70
 GAMESCREEN_IMAGE = pygame.image.load(
@@ -13,19 +13,19 @@ class Draw(object):
         self.drawQueue = [] #list of objects that need to be drawn in the current frame
 
     def isOnScreen(self, obj):
-        if self.drawQueue.find(obj):
+        if obj in self.drawQueue:
             return True
         else:
             return False
 
     def add(self, obj):
-        if not self.isOnScreen(self, obj):
+        if not self.isOnScreen(obj):
             self.drawQueue.append(obj)
         pass
 
     #can be safely called for an object not yet on screen
     def erase(self, obj):
-        if self.isOnScreen(self, obj): 
+        if self.isOnScreen(obj): 
             self.drawQueue.remove(obj)
         pass
 
@@ -35,25 +35,17 @@ class Draw(object):
 
         #loop through all of the objects in the queue and draw based on their type
         for o in self.drawQueue:
-            if hasattr(o, '__Note__'):
-<<<<<<< HEAD
-                pygame.draw.rect(WIN, BLUE, pygame.Rect(o.pos.first, o.pos.second, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
-            elif hasattr(o, '__JoyStick__'):
-                pygame.draw.rect(WIN, RED, pygame.Rect(o.pos.first, o.pos.second, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
-        pass
-=======
+            if isinstance(o, Note.Note):
                 #TODO: Replace placeholder shape with correct pngs (will make use of both position and direction)
-                pygame.draw.rect(WIN, BLUE, pygame.Rect(o.position.posX, o.position.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
-            elif hasattr(o, '__JoyStick__'):
+                pygame.draw.rect(WIN, BLUE, pygame.Rect(o.posX, o.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
+            elif isinstance(o, JoyStick.JoyStick):
                 #TODO: Replace placeholder shape with correct png
                 pygame.draw.rect(WIN, RED, pygame.Rect(o.posX, o.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
         
         pygame.display.update()
 
-        pass
 
     def draw_gamescreen(self, WIN):
         WIN.blit(GAMESCREEN_IMAGE, (0, 0))
         WIN.blit(QUIT_TEXT, (150,70))
         pygame.display.update()
->>>>>>> 13375b64a8dabb88520e056b4a5199ad19201634

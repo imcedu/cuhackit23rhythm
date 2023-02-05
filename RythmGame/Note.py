@@ -8,14 +8,16 @@ OFFSET = GRID_PX * 11
 
 
 class Note():
-    def __init__(self, direction, startpos, speed):
+    def __init__(self, scr, direction, startXpos, startYpos, speed):
         self.direction = direction
-        self.pos = startpos
+        self.posX = startXpos
+        self.posY = startYpos # Y-coordinate of tuple
         self.speed = speed if direction <= 3 else speed * sqrt(2)
-        self.moveIn()
-
-    xDir = 0
-    yDir = 0
+        self.scr = scr
+        self.xDir = 0
+        self.yDir = 0
+        self.setMotion()
+        self.moveIn(scr, self.xDir, self.yDir, self.speed)
 
     def setMotion(self):
 
@@ -64,12 +66,11 @@ class Note():
                 self.yDir = 1
                 pass
 
-    def moveIn(self, xDir, yDir, speed):
-        #while self.pos != targetPositon:
-            self.pos.first += xDir * speed
-            self.pos.second += yDir * speed
-            Draw.remove(self)
-            Draw.add(self)
+    def moveIn(self, scr, xDir, yDir, speed):
+        self.posX += xDir * speed
+        self.posY += yDir * speed
+        scr.erase(self)
+        scr.add(self)
 
 
 
