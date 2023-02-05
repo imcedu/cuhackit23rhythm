@@ -59,6 +59,9 @@ def main():
                  map.pop(0)
             for n in currNotes:
                 n.moveIn(screen, n.xDir, n.yDir, n.speed)
+                if (n.destroyable):
+                    currNotes.remove(n)
+                    
             screen.draw(WIN)
         
         # Reset JoyStick
