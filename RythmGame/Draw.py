@@ -24,10 +24,7 @@ ASTEROID = pygame.image.load(
     os.path.join('RythmGame/asteroids', 'smaller_asteroid.png'))
     
 QUIT_TEXT = pygame.image.load(os.path.join('RythmGame/graphics', 'quit_instructions.png'))
-# JOYSTICK_IMAGE = pygame.image.load(os.path.join('RythmGame/sprites', 'small_target.png'))
-# JOYSTICK = pygame.transform.scale(JOYSTICK_IMAGE, (250, 250))
 JOYSTICK = pygame.image.load(os.path.join('RythmGame/sprites', 'RESIZED_.png'))
-#ASTEROID = pygame.transform.scale(NOTE_GENERAL, (0, 0))
 JOYSTICK_OFFSET = 0
 ASTEROID_OFFSET = 15
 
