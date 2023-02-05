@@ -19,7 +19,7 @@ class GameFlow():
         WIN.blit(START_TEXT, (0,0))
         pygame.display.update()
 
-    def does_collide(stick, note, WIN):
+    def does_collide(self, stick, note, WIN):
         if abs(stick.posX + 35 - note.posX) <= 35 + THRESHOLD and abs(stick.posX + 35 - note.posX) <= 35 + THRESHOLD:
             return True
 
