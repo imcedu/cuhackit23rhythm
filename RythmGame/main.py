@@ -1,4 +1,4 @@
-import pygame, os, GameFlow, Draw, Note, NoteMapper
+import pygame, os, GameFlow, Draw, Note, NoteMapper, JoyStick
 
 WIDTH, HEIGHT = 770, 770
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -23,6 +23,7 @@ def main():
     run = True
     started = False
     mapper = NoteMapper.NoteMapper()
+    stick = JoyStick.JoyStick(RESTING_JOYSTICK_POSITION, RESTING_JOYSTICK_POSITION, RED)
     map = mapper.map
     currNotes = []
 
@@ -30,6 +31,14 @@ def main():
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
+                # Strum JoyStick if space was pressed during the tick
+                if event.key == pygame.K_SPACE:
+                    stick.strum()
+                    for note in currNotes:
+                        if game_flow.does_collide(stick, note, WIN):
+                            # WE COLLIDED!
+                            WIN.fill(RED)
+                            pygame.display.update()
                 if event.key == pygame.K_s:
                     screen.draw(WIN)
                     started = True
@@ -38,6 +47,10 @@ def main():
                 if event.key == pygame.K_ESCAPE:
                     run = False
         if started:
+            # Move JoyStick in direction
+            keys_pressed = pygame.key.get_pressed()
+            stick.move_stick(WIN, keys_pressed, screen)
+
             frameCounter += 1
             if int(map[0][1]) - frameCounter <= NOTE_LOOKAHEAD_OFFSET:
                  startXpos, startYpos  = getStartPos(map[0][0])
@@ -47,6 +60,9 @@ def main():
             for n in currNotes:
                 n.moveIn(screen, n.xDir, n.yDir, n.speed)
             screen.draw(WIN)
+        
+        # Reset JoyStick
+        stick.reset_stick(RESTING_JOYSTICK_POSITION, screen)
 
 
     pygame.quit()
