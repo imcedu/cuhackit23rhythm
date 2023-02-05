@@ -8,6 +8,6 @@ class NoteMapper(object):
                 line = file.readline()
                 if not line:
                     break
-                self.map.append((line[0], line[1:7]))
+                self.map.append((int(line[0]), line[1:7]))
 
 
