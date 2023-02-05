@@ -21,7 +21,7 @@ class GameFlow():
         pygame.display.update()
 
     def does_collide(self, stick, note, WIN):
-        if abs(stick.posX + 35 - note.posX) <= 35 + THRESHOLD and abs(stick.posX + 35 - note.posX) <= 35 + THRESHOLD:
+        if (abs(stick.posX - note.posX) <= 5 + THRESHOLD) and (abs(stick.posX - note.posX) <= 5 + THRESHOLD):
             return True
 
     def play_backtrack(self):

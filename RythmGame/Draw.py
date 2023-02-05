@@ -20,15 +20,16 @@ NOTE_D_DNRIGHT = pygame.image.load(
 NOTE_D_DNLEFT = pygame.image.load(
     os.path.join('RythmGame/asteroids', 'southwest.png'))
 
-NOTE_GENERAL = pygame.image.load(
-    os.path.join('RythmGame/asteroids', 'single_asteroid.png'))
+ASTEROID = pygame.image.load(
+    os.path.join('RythmGame/asteroids', 'smaller_asteroid.png'))
     
 QUIT_TEXT = pygame.image.load(os.path.join('RythmGame/graphics', 'quit_instructions.png'))
-JOYSTICK_IMAGE = pygame.image.load(os.path.join('RythmGame/sprites', 'small_target.png'))
-JOYSTICK = pygame.transform.scale(JOYSTICK_IMAGE, (250, 250))
-ASTEROID = pygame.transform.scale(NOTE_GENERAL, (500, 500))
+# JOYSTICK_IMAGE = pygame.image.load(os.path.join('RythmGame/sprites', 'small_target.png'))
+# JOYSTICK = pygame.transform.scale(JOYSTICK_IMAGE, (250, 250))
+JOYSTICK = pygame.image.load(os.path.join('RythmGame/sprites', 'RESIZED_.png'))
+#ASTEROID = pygame.transform.scale(NOTE_GENERAL, (0, 0))
 JOYSTICK_OFFSET = 75
-ASTEROID_OFFSET = 250
+ASTEROID_OFFSET = 15
 
 RED = (255, 0, 0)
 BLUE = (0, 255, 0)
