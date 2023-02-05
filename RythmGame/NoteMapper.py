@@ -1,8 +1,10 @@
+import os
+
 class NoteMapper(object):
     def __init__(self):
         self.map = []
         
-        with open('RythmGame/beatmap.txt', 'r') as file:
+        with open(os.path.join('RythmGame', 'beatmap.txt'), 'r') as file:
             line = file.readline()
             while line:
                 line = file.readline()
