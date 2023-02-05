@@ -36,8 +36,7 @@ def main():
                     stick.strum()
                     for note in currNotes:
                         if game_flow.does_collide(stick, note, WIN):
-                            # WE COLLIDED!
-                            WIN.fill(RED)
+                            screen.explosion(note, WIN)
                             screen.erase(note)
                             currNotes.remove(note)
                 if event.key == pygame.K_s:

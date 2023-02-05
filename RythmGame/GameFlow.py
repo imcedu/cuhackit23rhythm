@@ -7,7 +7,7 @@ TITLE_SCREEN = pygame.transform.scale(TITLE_SCREEN_IMAGE, (770,770))
 START_TEXT = pygame.image.load(
     os.path.join('RythmGame/graphics', 'start_instructions.png'))
 
-THRESHOLD = 10
+THRESHOLD = 0
 file = 'RythmGame/music/astro_beats_2.mp3'
 
 class GameFlow():

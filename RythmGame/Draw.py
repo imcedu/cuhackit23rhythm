@@ -19,10 +19,16 @@ NOTE_D_DNRIGHT = pygame.image.load(
     os.path.join('RythmGame/asteroids', 'southeast.png'))
 NOTE_D_DNLEFT = pygame.image.load(
     os.path.join('RythmGame/asteroids', 'southwest.png'))
+
+NOTE_GENERAL = pygame.image.load(
+    os.path.join('RythmGame/asteroids', 'single_asteroid.png'))
+    
 QUIT_TEXT = pygame.image.load(os.path.join('RythmGame/graphics', 'quit_instructions.png'))
 JOYSTICK_IMAGE = pygame.image.load(os.path.join('RythmGame/sprites', 'small_target.png'))
 JOYSTICK = pygame.transform.scale(JOYSTICK_IMAGE, (250, 250))
+ASTEROID = pygame.transform.scale(NOTE_GENERAL, (500, 500))
 JOYSTICK_OFFSET = 75
+ASTEROID_OFFSET = 250
 
 RED = (255, 0, 0)
 BLUE = (0, 255, 0)
@@ -36,6 +42,10 @@ class Draw(object):
             return True
         else:
             return False
+
+    def explosion(self, obj, WIN):
+        pygame.draw.rect(WIN, RED, pygame.Rect(obj.posX, obj.posY, 25, 25))
+        pygame.display.update()
 
     def add(self, obj):
         if not self.isOnScreen(obj):
@@ -58,42 +68,42 @@ class Draw(object):
                 match o.direction:
                     # C_UP = 0,
                     case 0:
-                        image = NOTE_C_UP
+                        image = ASTEROID
                         pass
 
                     # C_DOWN = 1,
                     case 1:
-                        image = NOTE_C_DOWN
+                        image = ASTEROID
                         pass
 
                     # C_LEFT = 2,
                     case 2:
-                        image = NOTE_C_LEFT
+                        image = ASTEROID
                         pass
                     
                     # C_RIGHT = 3,
                     case 3:
-                        image = NOTE_C_RIGHT
+                        image = ASTEROID
                         pass
 
                     # D_UPLEFT = 4,
                     case 4:
-                        image = NOTE_D_UPLEFT
+                        image = ASTEROID
 
                     # D_UPRIGHT = 5,
                     case 5:
-                        image = NOTE_D_UPRIGHT
+                        image = ASTEROID
 
                     # D_DNRIGHT = 6,
                     case 6:
-                        image = NOTE_D_DNRIGHT
+                        image = ASTEROID
 
                     # D_DNLEFT = 7,
                     case 7:
-                        image = NOTE_D_DNLEFT
+                        image = ASTEROID
 
                 #image = pygame.transform.scale_by(image, 30)
-                WIN.blit(image, (o.posX, o.posY))
+                WIN.blit(image, (o.posX - ASTEROID_OFFSET, o.posY - ASTEROID_OFFSET))
             elif isinstance(o, JoyStick.JoyStick):
                 WIN.blit(JOYSTICK, (o.posX - JOYSTICK_OFFSET, o.posY - JOYSTICK_OFFSET))
         
