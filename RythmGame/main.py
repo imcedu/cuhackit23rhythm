@@ -38,7 +38,8 @@ def main():
                         if game_flow.does_collide(stick, note, WIN):
                             # WE COLLIDED!
                             WIN.fill(RED)
-                            pygame.display.update()
+                            screen.erase(note)
+                            currNotes.remove(note)
                 if event.key == pygame.K_s:
                     if not started:
                         screen.draw(WIN)
