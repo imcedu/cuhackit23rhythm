@@ -24,7 +24,7 @@ class Note():
         match self.direction:
             # C_UP = 0,
             case 0:
-                self.yDir = -1,
+                self.yDir = -1
                 pass
 
             # C_DOWN = 1,
