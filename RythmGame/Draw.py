@@ -7,6 +7,8 @@ BLUE = (0, 255, 0)
 class Draw(object):
     def __init__(self):
         self.drawQueue = []
+        self.posX
+        self.posY
         pass
 
     def isOnScreen(self, obj):
@@ -28,7 +30,7 @@ class Draw(object):
     def draw(self, WIN):
         for o in self.drawQueue:
             if hasattr(o, '__Note__'):
-                pygame.draw.rect(WIN, BLUE, pygame.Rect(o.position.posX, o.position.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
+                pygame.draw.rect(WIN, BLUE, pygame.Rect(o.pos.first, o.pos.second, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
             elif hasattr(o, '__JoyStick__'):
-                pygame.draw.rect(WIN, RED, pygame.Rect(o.posX, o.posY, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
+                pygame.draw.rect(WIN, RED, pygame.Rect(o.pos.first, o.pos.second, GRID_SQUARE_SIZE, GRID_SQUARE_SIZE))
         pass
