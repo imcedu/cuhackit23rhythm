@@ -15,22 +15,22 @@ class JoyStick():
 
     def move_stick(self, WIN, keys_pressed, screen):
         # No direction is inputed, therefore reset stick to center
-        if (keys_pressed[pygame.K_a] == 0 and keys_pressed[pygame.K_d] == 0 and keys_pressed[pygame.K_w] == 0 and keys_pressed[pygame.K_s] == 0):
+        if (keys_pressed[pg.K_a] == 0 and keys_pressed[pg.K_d] == 0 and keys_pressed[pg.K_w] == 0 and keys_pressed[pg.K_s] == 0):
             self.reset_stick(RESTING_JOYSTICK_POSITION, screen)
 
-        if keys_pressed[pygame.K_a]: #LEFT
+        if keys_pressed[pg.K_a]: #LEFT
             if(self.posX > RESTING_JOYSTICK_POSITION - GRID_SQUARE_SIZE):
                 self.posX = self.posX - GRID_SQUARE_SIZE
 
-        if keys_pressed[pygame.K_d]: #RIGHT
+        if keys_pressed[pg.K_d]: #RIGHT
             if(self.posX < RESTING_JOYSTICK_POSITION + GRID_SQUARE_SIZE):
                 self.posX = self.posX + GRID_SQUARE_SIZE
         
-        if keys_pressed[pygame.K_w]: #UP
+        if keys_pressed[pg.K_w]: #UP
             if(self.posY > RESTING_JOYSTICK_POSITION - GRID_SQUARE_SIZE):
                 self.posY = self.posY - GRID_SQUARE_SIZE
 
-        if keys_pressed[pygame.K_s]: #DOWN
+        if keys_pressed[pg.K_s]: #DOWN
             if(self.posY < RESTING_JOYSTICK_POSITION + GRID_SQUARE_SIZE):
                 self.posY = self.posY + GRID_SQUARE_SIZE
 
