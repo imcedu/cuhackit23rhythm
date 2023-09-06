@@ -105,10 +105,9 @@ class Draw(object):
             elif isinstance(o, JoyStick.JoyStick):
                 WIN.blit(JOYSTICK, (o.posX - JOYSTICK_OFFSET, o.posY - JOYSTICK_OFFSET))
         
-        pygame.display.update()
+        pygame.display.flip()
 
 
     def draw_gamescreen(self, WIN):
         WIN.blit(GAMESCREEN_IMAGE, (0, 0))
         WIN.blit(QUIT_TEXT, (150,70))
-        pygame.display.update()
