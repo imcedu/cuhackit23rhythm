@@ -1,6 +1,6 @@
-import pygame
+import pygame as pg
 
-HEALTH_FONT = pygame.font.SysFont('comicsans', 40)
+HEALTH_FONT = py.font.SysFont('comicsans', 40)
 
 class Player():
     __init__(self):

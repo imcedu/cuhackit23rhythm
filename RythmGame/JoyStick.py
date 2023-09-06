@@ -1,5 +1,5 @@
 
-import pygame, Draw
+import pygame as pg, Draw
 
 
 RED = (255, 0, 0)
@@ -13,16 +13,16 @@ class JoyStick():
         self.isStrummed = False
 
     def move_stick(self, WIN, keys_pressed, screen):
-        if keys_pressed[pygame.K_a]: #LEFT
+        if keys_pressed[pg.K_a]: #LEFT
             self.posX = self.posX - GRID_SQUARE_SIZE
 
-        if keys_pressed[pygame.K_d]: #RIGHT
+        if keys_pressed[pg.K_d]: #RIGHT
             self.posX = self.posX + GRID_SQUARE_SIZE
         
-        if keys_pressed[pygame.K_w]: #UP
+        if keys_pressed[pg.K_w]: #UP
             self.posY = self.posY - GRID_SQUARE_SIZE
 
-        if keys_pressed[pygame.K_s]: #DOWN
+        if keys_pressed[pg.K_s]: #DOWN
             self.posY = self.posY + GRID_SQUARE_SIZE
 
         # Draw the joystick in the new location
