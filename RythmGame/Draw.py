@@ -1,30 +1,30 @@
-import pygame, os, Note, JoyStick
+import pygame as pg, os, Note, JoyStick
 
 GRID_SQUARE_SIZE = 70
-GAMESCREEN_IMAGE = pygame.image.load(
+GAMESCREEN_IMAGE = pg.image.load(
     os.path.join('RythmGame/graphics', 'gamescreen.png'))
-NOTE_C_UP = pygame.image.load(
+NOTE_C_UP = pg.image.load(
     os.path.join('RythmGame/asteroids', 'north.png'))
-NOTE_C_DOWN = pygame.image.load(
+NOTE_C_DOWN = pg.image.load(
     os.path.join('RythmGame/asteroids', 'south.png'))
-NOTE_C_LEFT = pygame.image.load(
+NOTE_C_LEFT = pg.image.load(
     os.path.join('RythmGame/asteroids', 'west.png'))
-NOTE_C_RIGHT = pygame.image.load(
+NOTE_C_RIGHT = pg.image.load(
     os.path.join('RythmGame/asteroids', 'east.png'))
-NOTE_D_UPLEFT = pygame.image.load(
+NOTE_D_UPLEFT = pg.image.load(
     os.path.join('RythmGame/asteroids', 'northwest.png'))
-NOTE_D_UPRIGHT = pygame.image.load(
+NOTE_D_UPRIGHT = pg.image.load(
     os.path.join('RythmGame/asteroids', 'northeast.png'))
-NOTE_D_DNRIGHT = pygame.image.load(
+NOTE_D_DNRIGHT = pg.image.load(
     os.path.join('RythmGame/asteroids', 'southeast.png'))
-NOTE_D_DNLEFT = pygame.image.load(
+NOTE_D_DNLEFT = pg.image.load(
     os.path.join('RythmGame/asteroids', 'southwest.png'))
 
-ASTEROID = pygame.image.load(
+ASTEROID = pg.image.load(
     os.path.join('RythmGame/asteroids', 'smaller_asteroid.png'))
     
-QUIT_TEXT = pygame.image.load(os.path.join('RythmGame/graphics', 'quit_instructions.png'))
-JOYSTICK = pygame.image.load(os.path.join('RythmGame/sprites', 'RESIZED_.png'))
+QUIT_TEXT = pg.image.load(os.path.join('RythmGame/graphics', 'quit_instructions.png'))
+JOYSTICK = pg.image.load(os.path.join('RythmGame/sprites', 'RESIZED_.png'))
 JOYSTICK_OFFSET = 0
 ASTEROID_OFFSET = 15
 
@@ -42,8 +42,8 @@ class Draw(object):
             return False
 
     def explosion(self, obj, WIN):
-        pygame.draw.rect(WIN, RED, pygame.Rect(obj.posX, obj.posY, 25, 25))
-        pygame.display.update()
+        pg.draw.rect(WIN, RED, pg.Rect(obj.posX, obj.posY, 25, 25))
+        pg.display.update()
 
     def add(self, obj):
         if not self.isOnScreen(obj):
@@ -100,12 +100,12 @@ class Draw(object):
                     case 7:
                         image = ASTEROID
 
-                #image = pygame.transform.scale_by(image, 30)
+                #image = pg.transform.scale_by(image, 30)
                 WIN.blit(image, (o.posX - ASTEROID_OFFSET, o.posY - ASTEROID_OFFSET))
             elif isinstance(o, JoyStick.JoyStick):
                 WIN.blit(JOYSTICK, (o.posX - JOYSTICK_OFFSET, o.posY - JOYSTICK_OFFSET))
         
-        pygame.display.flip()
+        pg.display.flip()
 
 
     def draw_gamescreen(self, WIN):
