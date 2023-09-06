@@ -33,12 +33,11 @@ def main():
                 # Strum JoyStick if space was pressed during the tick
                 if event.key == pygame.K_SPACE:
                     stick.strum()
-                    # for note in currNotes:
-                    note = Note.note()
-                    if game_flow.does_collide(stick, note, WIN):
-                        screen.explosion(note, WIN)
-                        screen.erase(note)
-                        currNotes.remove(note)
+                    for note in currNotes:
+                        if game_flow.does_collide(stick, note, WIN):
+                            screen.explosion(note, WIN)
+                            screen.erase(note)
+                            currNotes.remove(note)
                 if event.key == pygame.K_s:
                     if not started:
                         screen.draw(WIN)
@@ -64,9 +63,6 @@ def main():
                     currNotes.remove(n)
                     
             screen.draw(WIN)
-        
-        # Reset JoyStick
-        stick.reset_stick(RESTING_JOYSTICK_POSITION, screen)
 
 
     pygame.quit()
