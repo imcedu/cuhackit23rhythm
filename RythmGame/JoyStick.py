@@ -4,6 +4,7 @@ import pygame as pg, Draw
 
 RED = (255, 0, 0)
 GRID_SQUARE_SIZE = 70
+RESTING_JOYSTICK_POSITION = 350
 
 class JoyStick():  
     def __init__(self, posX, posY, color):
@@ -13,17 +14,25 @@ class JoyStick():
         self.isStrummed = False
 
     def move_stick(self, WIN, keys_pressed, screen):
-        if keys_pressed[pg.K_a]: #LEFT
-            self.posX = self.posX - GRID_SQUARE_SIZE
+        # No direction is inputed, therefore reset stick to center
+        if (keys_pressed[pygame.K_a] == 0 and keys_pressed[pygame.K_d] == 0 and keys_pressed[pygame.K_w] == 0 and keys_pressed[pygame.K_s] == 0):
+            self.reset_stick(RESTING_JOYSTICK_POSITION, screen)
 
-        if keys_pressed[pg.K_d]: #RIGHT
-            self.posX = self.posX + GRID_SQUARE_SIZE
+        if keys_pressed[pygame.K_a]: #LEFT
+            if(self.posX > RESTING_JOYSTICK_POSITION - GRID_SQUARE_SIZE):
+                self.posX = self.posX - GRID_SQUARE_SIZE
+
+        if keys_pressed[pygame.K_d]: #RIGHT
+            if(self.posX < RESTING_JOYSTICK_POSITION + GRID_SQUARE_SIZE):
+                self.posX = self.posX + GRID_SQUARE_SIZE
         
-        if keys_pressed[pg.K_w]: #UP
-            self.posY = self.posY - GRID_SQUARE_SIZE
+        if keys_pressed[pygame.K_w]: #UP
+            if(self.posY > RESTING_JOYSTICK_POSITION - GRID_SQUARE_SIZE):
+                self.posY = self.posY - GRID_SQUARE_SIZE
 
-        if keys_pressed[pg.K_s]: #DOWN
-            self.posY = self.posY + GRID_SQUARE_SIZE
+        if keys_pressed[pygame.K_s]: #DOWN
+            if(self.posY < RESTING_JOYSTICK_POSITION + GRID_SQUARE_SIZE):
+                self.posY = self.posY + GRID_SQUARE_SIZE
 
         # Draw the joystick in the new location
         screen.add(self)

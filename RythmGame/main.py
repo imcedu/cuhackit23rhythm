@@ -49,7 +49,6 @@ def main():
                         screen.draw(WIN)
                         started = True
                         frameCounter = -1 #incremented at end of every tick, so will start at 0
-                        #TODO: play the song here
                         game_flow.play_backtrack()
                 if event.key == pg.K_ESCAPE:
                     run = False
@@ -70,9 +69,6 @@ def main():
                     currNotes.remove(n)
                     
             screen.draw(WIN)
-        
-        # Reset JoyStick
-        stick.reset_stick(RESTING_JOYSTICK_POSITION, screen)
 
     pg.quit()
 
