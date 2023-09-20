@@ -7,7 +7,7 @@ TITLE_SCREEN = pg.transform.scale(TITLE_SCREEN_IMAGE, (770,770))
 START_TEXT = pg.image.load(
     os.path.join('RythmGame/graphics', 'start_instructions.png'))
 
-THRESHOLD = 0
+COLLISION_THRESHOLD = 40
 file = 'RythmGame/music/astro_beats_2.mp3'
 
 class GameFlow():
@@ -20,12 +20,11 @@ class GameFlow():
         WIN.blit(START_TEXT, (0,0))
         pg.display.update()
 
-    # TODO: Verify this collision logic
     def does_collide(self, stick, note, WIN):
-        if (abs(stick.posX - note.posX) <= 45 + THRESHOLD) and (abs(stick.posY - note.posY) <= 45 + THRESHOLD):
-            return False
-        if (abs(stick.posX - note.posX) <= 60 + THRESHOLD) and (abs(stick.posY - note.posY) <= 60 + THRESHOLD):
+        if (abs(stick.posX - note.posX) <= COLLISION_THRESHOLD) and (abs(stick.posY - note.posY) <= COLLISION_THRESHOLD):
             return True
+        else:
+            return False
 
     def play_backtrack(self):
         pg.mixer.init()

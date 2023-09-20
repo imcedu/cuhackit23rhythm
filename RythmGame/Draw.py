@@ -25,7 +25,7 @@ ASTEROID = pg.image.load(
     
 QUIT_TEXT = pg.image.load(os.path.join('RythmGame/graphics', 'quit_instructions.png'))
 JOYSTICK = pg.image.load(os.path.join('RythmGame/sprites', 'RESIZED_.png'))
-JOYSTICK_OFFSET = 0
+JOYSTICK_OFFSET = 35
 ASTEROID_OFFSET = 15
 
 RED = (255, 0, 0)
@@ -67,22 +67,18 @@ class Draw(object):
                     # C_UP = 0,
                     case 0:
                         image = ASTEROID
-                        pass
 
                     # C_DOWN = 1,
                     case 1:
                         image = ASTEROID
-                        pass
 
                     # C_LEFT = 2,
                     case 2:
                         image = ASTEROID
-                        pass
                     
                     # C_RIGHT = 3,
                     case 3:
                         image = ASTEROID
-                        pass
 
                     # D_UPLEFT = 4,
                     case 4:
